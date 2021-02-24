@@ -15,14 +15,20 @@ class SchoolYearType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('dateStart')
-            ->add('dateEnd')
+            ->add('dateStart', DateType::class, [
+                'widget' => 'slingle_text',
+                // 'format' => 'dd/MM/yy',
+                // 'html5' => false,
+            ])
+            ->add('dateEnd', DateType::class, [
+                'widget' => 'slingle_text',
+            ])
             ->add('users', EntityType::class, [
                 // looks for choices from this entity
                 'class' => User::class,
             
                 // uses the User.username property as the visible option string
-                'choice_label' => function($user) {
+                'choice_label' => function ($user) {
                     return "{$user->getFirstName()} {$user->getLastName()} ({$user->getId()})";
                 },
             

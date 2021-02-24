@@ -21,7 +21,7 @@ class ProjectType extends AbstractType
                 'class' => User::class,
             
                 // uses the User.username property as the visible option string
-                'choice_label' => function($user) {
+                'choice_label' => function ($user) {
                     return "{$user->getFirstName()} {$user->getLastName()} ({$user->getId()})";
                 },
             
